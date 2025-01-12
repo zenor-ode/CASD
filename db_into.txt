@@ -1,0 +1,1 @@
+postgresql://casd_testdb_owner:Y8mWBv0wOjzL@ep-rough-sun-a2905hb2.eu-central-1.aws.neon.tech/casd_testdb?sslmode=require
