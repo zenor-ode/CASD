@@ -1,11 +1,11 @@
 import csv
-from models import Ship
+from ship import Ship
 from app import session
 
 # File path to the CSV file
 # Replace with your actual CSV file path
 
-csv_file_path = "C:\\Users\\zulqa\\OneDrive\\Desktop\\Semester 3_URO\\CA\\Project\\Regression\\ship_data.csv" 
+csv_file_path = "ship_data.csv"
  
 # Read CSV and add ship data to the database
 with open(csv_file_path, "r") as csv_file:

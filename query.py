@@ -1,4 +1,4 @@
-from models import Ship
+from ship import Ship
 from app import session
 
 # Print the database for csv file

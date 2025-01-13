@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from models import Base
+from ship import Base
 
 # Ship database
 engine = create_engine("sqlite:///shipDB.sqlite3", echo=True)

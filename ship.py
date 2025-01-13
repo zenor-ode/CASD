@@ -17,7 +17,7 @@ class Ship(Base):
     displacement_tons = Column("Displacement (tons)", Float, nullable=False)
     block_coefficient = Column("Block Coefficient", Float, nullable=False)
 
-    # Initialzing Ship Attributes via initializing Mehthod
+    # Initializing Ship Attributes via initializing Method
     def __init__(self, name, capacity, speed_knots, length_m, beam_m, draft_m, displacement_tons, block_coefficient):
         self.name = name
         self.capacity = capacity
