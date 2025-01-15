@@ -16,10 +16,11 @@ def main():
     #
     #
     # display_ships(session,SyntheticShip)
-
+    print("Start")
     models = load_models()
-    scaler = load_scaler_from_path("models/scaler.pkl")
+    scaler = load_scaler_from_path("scaler.pkl")
     predict_features(50000, 10, models, scaler)
+    print("End")
 
 
 

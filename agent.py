@@ -7,6 +7,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error
+
+import ship
 from ship import Ship
 
 from db_functions import init_db
@@ -58,28 +60,29 @@ def main():
         mae = mean_absolute_error(y_test[feature], y_pred[feature])
         print(f'Mean Absolute Error for {feature} Prediction: {mae}')
 
-    # Example of predicting for a new ship
-    new_ship_data = np.array([[1200, 23]])  # Example new ship data (Capacity, Speed)
-    new_ship_data_scaled = scaler.transform(new_ship_data)
+    # # Example of predicting for a new ship
+    # new_ship_data = np.array([[1200, 23]])  # Example new ship data (Capacity, Speed)
+    # new_ship_data_scaled = scaler.transform(new_ship_data)
+    #
+    # new_ship_predictions = {}
+    # for feature in y.columns:
+    #     new_ship_predictions[feature] = models[feature].predict(new_ship_data_scaled)[0]
+    #
+    # print("\nPredicted values for the new ship:")
+    # print(new_ship_predictions)
 
-    new_ship_predictions = {}
-    for feature in y.columns:
-        new_ship_predictions[feature] = models[feature].predict(new_ship_data_scaled)[0]
 
-    print("\nPredicted values for the new ship:")
-    print(new_ship_predictions)
-
-
-    os.makedirs("models", exist_ok=True)
+    #os.makedirs("models", exist_ok=True)
     for feature, model in models.items():
-        filename = os.path.join("models", f"{feature}_predictor_model.pkl")
+        filename = os.path.join(f"{feature}_predictor_model.pkl")
         joblib.dump(model, filename)
         print(f"Model for {feature} saved as {filename}.")
-    joblib.dump(scaler, os.path.join("models", "scaler.pkl"))
-def load_scaler_from_path(path):
+    joblib.dump(scaler, "scaler.pkl")
+
+def load_scaler_from_path(name):
     # Load the scaler
-    scaler = joblib.load(path)
-    print("Scaler loaded from scaler.pkl.")
+    scaler = joblib.load(name)
+    print(f"Scaler loaded from {name}.")
     return  scaler
 
 def load_models():
@@ -89,6 +92,7 @@ def load_models():
         loaded_models[feature] = joblib.load(filename)
         print(f"Loaded model for {feature} from {filename}.")
     return loaded_models
+
 def predict_features(capacity, speed, loaded_models, scaler):
     new_ship_data = np.array([[capacity, speed]])  # Example new ship data (Capacity, Speed)
     new_ship_data_scaled = scaler.transform(new_ship_data)  # Use the same scaler from training
