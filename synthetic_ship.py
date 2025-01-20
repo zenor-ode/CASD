@@ -53,11 +53,10 @@ def generate_synthetic_ships(real_ships, num_synthetic_ships, n_clusters=3):
         for ship in real_ships
     ])
 
-    # Perform K-Means clustering on real ship data
+    # K-Means clustering on real ship data
     kmeans = KMeans(n_clusters=n_clusters, random_state=42)
     kmeans.fit(ship_data)
 
-    # Generate synthetic ships by sampling around cluster centers
     cluster_centers = kmeans.cluster_centers_
 
     for _ in range(num_synthetic_ships):

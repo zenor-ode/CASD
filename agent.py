@@ -15,22 +15,35 @@ from db_functions import init_db
 
 def main():
     session = init_db()
-    ships = session.query(Ship).all()
-    ship_data = [
-        {
-            "id": ship.id,
-            "Ship Name": ship.name,
-            "Capacity": ship.capacity,
-            "Speed": ship.speed_knots,
-            "Length": ship.length_m,
-            "Beam": ship.beam_m,
-            "Draft": ship.draft_m,
-            "Displacement": ship.displacement_tons,
-            "Block Coefficient": ship.block_coefficient,
+    #ships = session.query(Ship).all()
+    # ships =
+    # ship_data = [
+    #     {
+    #         "id": ship.id,
+    #         "Ship Name": ship.name,
+    #         "Capacity": ship.capacity,
+    #         "Speed": ship.speed_knots,
+    #         "Length": ship.length_m,
+    #         "Beam": ship.beam_m,
+    #         "Draft": ship.draft_m,
+    #         "Displacement": ship.displacement_tons,
+    #         "Block Coefficient": ship.block_coefficient,
+    #     }
+    #     for ship in ships
+    # ]
+    # df = pd.DataFrame(ship_data)
+    df = pd.read_csv("synthetic_ships.csv")
+    df = df.rename(
+        columns={
+            "Capacity (TEU)": "Capacity",
+            "Speed (knots)": "Speed",
+            "Length (m)": "Length",
+            "Beam (m)": "Beam",
+            "Draft (m)": "Draft",
+            "Displacement (tons)": "Displacement",
+            "Block Coefficient": "Block Coefficient",
         }
-        for ship in ships
-    ]
-    df = pd.DataFrame(ship_data)
+    )
 
 
     X = df[['Capacity', 'Speed']]  # Input features (Capacity and Speed)
