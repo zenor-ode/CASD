@@ -36,7 +36,7 @@ class SyntheticShip(Base):
 
 
 # Generate synthetic ships data
-def generate_synthetic_ships(real_ships, num_synthetic_ships, n_clusters=3):
+def generate_synthetic_ships(real_ships, num_synthetic_ships, n_clusters=7):
     synthetic_ships = []
 
     # Prepare real ship data for clustering

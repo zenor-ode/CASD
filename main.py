@@ -10,16 +10,16 @@ def main():
     # display_ships(session,Ship)
     # display_ships(session,SyntheticShip)
     # real_ships = session.query(Ship).all()
-    # generated_ships = generate_synthetic_ships(real_ships, 150) # synthetic data generation
-    # write_to_csv(generated_ships, "synthetic_ships.csv")
+    # generated_ships = generate_synthetic_ships(real_ships, 200) # synthetic data generation
+    # write_to_csv(generated_ships, "synthetic_ships_new.csv")
     #import_ships_from_csv("generated_ships_alot.csv",session)
     #
     #
-    # display_ships(session,SyntheticShip)
+    # # display_ships(session,SyntheticShip)
     print("Start")
     models = load_models()
     scaler = load_scaler_from_path("scaler.pkl")
-    predict_features(23992, 22.9, models, scaler)
+    predict_features(15000, 30, models, scaler)
     print("End")
 
 

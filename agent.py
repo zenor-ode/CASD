@@ -32,7 +32,7 @@ def main():
     #     for ship in ships
     # ]
     # df = pd.DataFrame(ship_data)
-    df = pd.read_csv("synthetic_ships.csv")
+    df = pd.read_csv("synthetic_ships_new.csv") #input
     df = df.rename(
         columns={
             "Capacity (TEU)": "Capacity",
